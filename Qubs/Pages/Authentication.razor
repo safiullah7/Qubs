@@ -1,0 +1,38 @@
+﻿@page "/authentication"
+@layout AuthLayout
+
+<div id="wrapper" class="login-page">
+    <div id="wrapper" class="login-page">
+        <div class="login-form">
+            <EditForm Model="@login" OnValidSubmit="@HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
+                <div class="logo">
+                    <a href=""><img src="/images/logo.svg" alt="QUBS"></a>
+                </div>
+
+                <InputText placeholder="Email" type="email" id="email" @bind-Value="login.Email" />
+                <InputText placeholder="Password" type="password" id="name" @bind-Value="login.Password" />
+
+                <div class="help">
+                    <a href="">Sign Up</a>
+                    <a href="">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn">SIGN IN</button>
+                <p>&copy; 2017  <a href="">QUBS</a></p>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    bool success;
+    Login login = new();
+
+    private void HandleValidSubmit()
+    {
+        
+    }
+}

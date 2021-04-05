@@ -1,0 +1,27 @@
+﻿@page "/patient-list"
+
+<main id="main" class="flex-box">
+    <div id="content" class="flex-box">
+        <section class="patient-list">
+            <header class="header">
+                <h1 style="color: #4cc2c6;">Dr John Doe’s Patient List</h1>
+                <select class="monthly-filter-ddl">
+                    <option>This Week</option>
+                    <option>This Month</option>
+                    <option>Last Month</option>
+                    <option>Next Month</option>
+                </select>
+            </header>
+
+            <PatientTable />
+        </section>
+    </div>
+    <a href="#" class="sidebar-opener">Patient <i class="icon-info"></i></a>
+    <aside id="sidebar">
+        <SelectedPatientDetails />
+    </aside>
+</main>
+
+@code {
+
+}
