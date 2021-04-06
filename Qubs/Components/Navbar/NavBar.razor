@@ -25,22 +25,28 @@
         <a href="#" class="author">Hashitha</a>
         <ul>
             <li>
-                <a href="#" class="opener">Account</a>
-                <ul class="dropdown">
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Billing</a></li>
-                    <li><a href="#">Sites</a></li>
-                    <li><a href="#">Settings</a></li>
-                </ul>
+                <a href="#" @onclick="() => accountDdl = !accountDdl" class="opener">Account</a>
+                @if (accountDdl)
+                {
+                    <ul class="dropdown">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Billing</a></li>
+                        <li><a href="#">Sites</a></li>
+                        <li><a href="#">Settings</a></li>
+                    </ul>
+                }
             </li>
             <li>
-                <a href="#" class="opener">Help</a>
-                <ul class="dropdown">
-                    <li><a href="#">Option 1</a></li>
-                    <li><a href="#">Option 2</a></li>
-                    <li><a href="#">Option 3</a></li>
-                    <li><a href="#">Option 4</a></li>
-                </ul>
+                <a href="#" @onclick="() => helpDdl = !helpDdl" class="opener">Help</a>
+                @if (helpDdl)
+                {
+                    <ul class="dropdown">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                        <li><a href="#">Option 4</a></li>
+                    </ul>
+                }
             </li>
             <li><a href="#" class="logout">Logout</a></li>
         </ul>
@@ -48,5 +54,6 @@
 </header>
 
 @code {
-
+    public bool accountDdl { get; set; }
+    public bool helpDdl { get; set; }
 }
