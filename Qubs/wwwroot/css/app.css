@@ -1204,6 +1204,40 @@ input[type="submit"] {
 	border-radius: 19px;
 }
 
+.search-form .birthdate {
+	font-size: 15px;
+	line-height: 21px;
+	padding: 10px 10px 10px 22px;
+	color: #fff;
+	background: #1e2933;
+	border: none;
+	border-radius: 19px;
+}
+
+.ant-picker-input > input {
+	color: #fff !important;
+}
+
+.ant-picker-panel-container {
+	background-color: #1e2933 !important;
+}
+
+.ant-picker-content th {
+	color: #fff !important;
+}
+
+.ant-picker-header {
+	color: #fff !important;
+}
+
+.ant-picker-cell .ant-picker-cell-inner {
+	color: #fff !important;
+}
+
+.ant-picker-footer {
+	color: #fff !important;
+}
+
 .search-form input[type="text"]::-webkit-input-placeholder {
 	color: #fff;
 }
@@ -4843,7 +4877,7 @@ body>.jcf-select-drop.jcf-drop-flipped {
 
 .popup-holder {
 	position: relative;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	height: 0;
 }
 
@@ -4859,7 +4893,7 @@ div.lightbox p {
 	max-width: 356px;
 	padding: 0 20px 20px;
 	text-align: center;
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 
 .form-popup.card-info {
