@@ -32,8 +32,8 @@ namespace Qubs.Store.Patients.Effects
                 {
                     new Patient
                     {
-                        Domain = "",
-                        Sk = "",
+                        Domain = "123",
+                        Sk = "123",
                         CompanyName = "Company Name",
                         PatientId = "pat id",
                         FirstName = "pat fname",
@@ -44,8 +44,8 @@ namespace Qubs.Store.Patients.Effects
                     },
                     new Patient
                     {
-                        Domain = "",
-                        Sk = "",
+                        Domain = "321",
+                        Sk = "312",
                         CompanyName = "Company Name",
                         PatientId = "pat 2 id",
                         FirstName = "pat 2 fname",
@@ -56,8 +56,8 @@ namespace Qubs.Store.Patients.Effects
                     },
                     new Patient
                     {
-                        Domain = "",
-                        Sk = "",
+                        Domain = "132",
+                        Sk = "345",
                         CompanyName = "Company Name",
                         PatientId = "pat 3 id",
                         FirstName = "pat 3 fname",

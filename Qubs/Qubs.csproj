@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Store\Patient\**" />
+    <Content Remove="Store\Patient\**" />
+    <EmbeddedResource Remove="Store\Patient\**" />
+    <None Remove="Store\Patient\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\images\img01.jpg" />
     <None Include="wwwroot\images\img02.jpg" />
     <None Include="wwwroot\images\logo-white.svg" />
@@ -40,10 +47,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Store\Patient\" />
   </ItemGroup>
 
 </Project>

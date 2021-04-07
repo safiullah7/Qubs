@@ -13,18 +13,21 @@
             <th>Images</th>
         </tr>
     </thead>
-    @foreach (var patient in Patients)
+    @if (Patients !=null && Patients.Count > 0)
     {
-        <tr @onclick="() => StateFacade.LoadPatient(patient)">
-            <td data-title="Patient Name"><span class="txt"><a href="#">@(patient.FirstName + " " + patient.LastName)</a></span></td>
-            <td data-title="Patient ID"><span class="txt">@patient.PatientId</span></td>
-            <td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11">@patient.DateOfBirth</time></span></td>
-            <td data-title="Descriptions"><span class="txt">US Pelvis</span></td>
-            <td data-title="Accession"><span class="txt">333001</span></td>
-            <td data-title="Date"><span class="txt"><time datetime="2017-05-11">@patient.DateOfBirthAsDateTime</time></span></td>
-            <td data-title="Modality"><span class="txt">US</span></td>
-            <td data-title="Images"><span class="txt">35</span></td>
-        </tr>
+        @foreach (var patient in Patients)
+        {
+            <tr @onclick="() => StateFacade.SetSelectedPatient(patient)">
+                <td data-title="Patient Name"><span class="txt"><a href="#">@(patient.FirstName + " " + patient.LastName)</a></span></td>
+                <td data-title="Patient ID"><span class="txt">@patient.PatientId</span></td>
+                <td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11">@patient.DateOfBirth</time></span></td>
+                <td data-title="Descriptions"><span class="txt">US Pelvis</span></td>
+                <td data-title="Accession"><span class="txt">333001</span></td>
+                <td data-title="Date"><span class="txt"><time datetime="2017-05-11">@patient.DateOfBirthAsDateTime</time></span></td>
+                <td data-title="Modality"><span class="txt">US</span></td>
+                <td data-title="Images"><span class="txt">35</span></td>
+            </tr>
+        }
     }
 </table>
 
@@ -43,5 +46,5 @@
 
 @code {
     [Parameter]
-    public List<Models.Patient.Patient> Patients { get; set; }
+    public List<Patient> Patients { get; set; }
 }

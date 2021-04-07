@@ -4,6 +4,7 @@
 @inherits Fluxor.Blazor.Web.Components.FluxorComponent
 
 @inject StateFacade Facade
+@inject IState<PatientState> PatientState
 
 <main id="main" class="flex-box">
     <div id="content" class="flex-box">
@@ -39,12 +40,26 @@
                 </select>*@
             </header>
 
-            <PatientTable />
+            @if (PatientState.Value.IsLoadingPatientList && PatientState.Value.Patients == null)
+            {
+                <Skeleton Active="true" ParagraphRows="10"></Skeleton>
+            }
+            else
+            {
+                <PatientTable Patients="PatientState.Value.Patients" />
+            }
         </section>
     </div>
     <a href="#" class="sidebar-opener">Patient <i class="icon-info"></i></a>
     <aside id="sidebar">
-        <SelectedPatientDetails />
+        @if (PatientState.Value.SelectedPatient != null)
+        {
+            <SelectedPatientDetails Patient="PatientState.Value.SelectedPatient ?? null" />
+        }
+        else
+        {
+            <p>No patient selected</p>
+        }
     </aside>
 </main>
 

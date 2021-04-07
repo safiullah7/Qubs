@@ -31,9 +31,10 @@ namespace Qubs.Services
             dispatcher.Dispatch(new LoadPatientsAction());
         }
 
-        public void LoadPatient(Patient patient)
+        public void SetSelectedPatient(Patient patient)
         {
-
+            logger.LogInformation("Dispatched LoadPatients action");
+            dispatcher.Dispatch(new SetSelectedPatientAction(patient));
         }
     }
 }

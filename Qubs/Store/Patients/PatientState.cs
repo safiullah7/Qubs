@@ -6,9 +6,10 @@ namespace Qubs.Store.Patients
 {
     public record PatientState
     {
-        public string ErrorMessage { get; set; }
-        public bool IsLoadingPatientList { get; set; }
-        public List<Patient> Patients { get; set; }
+        public string ErrorMessage { get; init; }
+        public bool IsLoadingPatientList { get; init; }
+        public List<Patient> Patients { get; init; }
+        public Patient SelectedPatient { get; init; }
     }
 
     public class PatientStateFeature : Feature<PatientState>
@@ -20,7 +21,8 @@ namespace Qubs.Store.Patients
         {
             ErrorMessage = null,
             IsLoadingPatientList = false,
-            Patients = null
+            Patients = null,
+            SelectedPatient = null
         };
     }
 }
