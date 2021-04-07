@@ -1,6 +1,10 @@
 ﻿@page "/patient-list"
 @page "/"
 
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+@inject StateFacade Facade
+
 <main id="main" class="flex-box">
     <div id="content" class="flex-box">
         <section class="patient-list">
@@ -25,4 +29,9 @@
 
 @code {
 
+    protected override void OnInitialized()
+    {
+        Facade.LoadPatients();
+        base.OnInitialized();
+    }
 }
