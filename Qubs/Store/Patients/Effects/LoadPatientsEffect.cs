@@ -38,7 +38,7 @@ namespace Qubs.Store.Patients.Effects
                         PatientId = "pat id",
                         FirstName = "pat fname",
                         LastName = "pat lname",
-                        DateOfBirth = "20/4/2021",
+                        DateOfBirth = "28-10-1994",
                         Gender = "Male",
                         MobilePhone = "65487954654"
                     },
@@ -50,7 +50,7 @@ namespace Qubs.Store.Patients.Effects
                         PatientId = "pat 2 id",
                         FirstName = "pat 2 fname",
                         LastName = "pat 2 lname",
-                        DateOfBirth = "20/4/2021",
+                        DateOfBirth = "28-10-1994",
                         Gender = "Female",
                         MobilePhone = "65487954654"
                     },
@@ -62,7 +62,7 @@ namespace Qubs.Store.Patients.Effects
                         PatientId = "pat 3 id",
                         FirstName = "pat 3 fname",
                         LastName = "pat 3 lname",
-                        DateOfBirth = "20/4/2021",
+                        DateOfBirth = "28-10-1994",
                         Gender = "Male",
                         MobilePhone = "65487954654"
                     }
