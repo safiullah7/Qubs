@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Qubs.Models.Patient;
 
 namespace Qubs.Services
 {
@@ -28,6 +29,11 @@ namespace Qubs.Services
         {
             dispatcher.Dispatch(new AddCounter(count));
             logger.LogInformation("Dispatched AddCounter action");
+        }
+
+        public void LoadPatient(Patient patient)
+        {
+
         }
     }
 }

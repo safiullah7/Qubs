@@ -5,21 +5,21 @@
         <a href="#"><img src="images/logo-white.svg" width="117" alt="QUBS"></a>
     </div>
     <a href="#" class="search-opener"><i class="icon-search"></i></a>
-    <form action="#" class="search-form">
+    <EditForm class="search-form" Model=@filter>
         <div class="fields">
             <div class="form-group">
-                <input type="text" placeholder="First Name">
+                <Input Type="text" Placeholder="First Name" @bind-Value=filter.FirstName />
             </div>
             <div class="form-group">
-                <input type="text" placeholder="Last Name">
+                <Input Type="text" Placeholder="Last Name" @bind-Value=filter.LastName />
             </div>
             <div class="form-group">
-                <input type="text" placeholder="Birthday" data-datepicker="">
+                <DatePicker Class="birthdate text-white" Placeholder="@("Birthday")" TValue="DateTime?" Picker="@DatePickerType.Date" @bind-Value=filter.DateOfBirth Format="dd-MM-yyyy" />
             </div>
         </div>
         <button type="submit" class="btn red">Search</button>
-        <a href="#adv-search" class="btn blue lightbox">Advanced Search</a>
-    </form>
+        <a href="#adv-search" class="btn blue lightbox" @onclick="() => ShowAdvancedSearch = !ShowAdvancedSearch">Advanced Search</a>
+    </EditForm>
     <a href="#" class="nav-opener"><span></span></a>
     <nav id="nav">
         <a href="#" class="author">Hashitha</a>
@@ -51,9 +51,73 @@
             <li><a href="#" class="logout">Logout</a></li>
         </ul>
     </nav>
+
+    <!-- inline lightbox structure example -->
+    <Modal Visible="@ShowAdvancedSearch"
+           OnOk="@HandleOk"
+           OnCancel="@HandleCancel"
+           Footer="null"
+           Closable="false"
+           Width="350"
+           Style="top: 20px"
+           BodyStyle="padding: 0">
+        <EditForm Model=@filter id="adv-search" class="lightbox form-popup">
+            <h3>Advanced Search</h3>
+            <div class="form-group">
+                <label for="fname">First Name</label>
+                <Input Type="text" id="fname" @bind-Value=filter.FirstName>
+            </div>
+            <div class="form-group">
+                <label for="lname">Last Name</label>
+                <Input Type="text" id="lname" @bind-Value=filter.LastName>
+            </div>
+            <div class="form-group">
+                <label for="dob">Birthdate</label>
+                <DatePicker Class="text-white" Placeholder="@("Birthday")" TValue="DateTime?" Picker="@DatePickerType.Date" @bind-Value=filter.DateOfBirth Format="dd-MM-yyyy" />
+            </div>
+            <div class="form-group">
+                <label for="study-date">Study Date</label>
+                <Input Type="text" id="study-date" @bind-Value=filter.StudyDate>
+            </div>
+            <div class="form-group">
+                <label for="description">Last Description</label>
+                <Input Type="text" id="description" @bind-Value=filter.Description>
+            </div>
+            <div class="form-group">
+                <label for="patient-id">Patient ID</label>
+                <Input Type="text" id="patient-id" @bind-Value=filter.PatientId>
+            </div>
+            <div class="form-group">
+                <label for="accession">Accession</label>
+                <Input Type="text" id="accession" @bind-Value=filter.Accession>
+            </div>
+            <button type="submit" class="btn blue">Search</button>
+        </EditForm>
+    </Modal>
 </header>
+
 
 @code {
     public bool accountDdl { get; set; }
     public bool helpDdl { get; set; }
+    public bool ShowAdvancedSearch { get; set; } = false;
+
+    PatientFilter filter = new PatientFilter();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+    }
+
+    private void HandleOk(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        ShowAdvancedSearch = false;
+    }
+
+    private void HandleCancel(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        ShowAdvancedSearch = false;
+    }
 }
