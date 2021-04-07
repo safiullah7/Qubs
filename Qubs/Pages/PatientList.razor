@@ -10,12 +10,33 @@
         <section class="patient-list">
             <header class="header">
                 <h1 style="color: #4cc2c6;">Dr John Doe’s Patient List</h1>
-                <select class="monthly-filter-ddl">
+
+                <Dropdown Trigger="@(new TriggerType[] { TriggerType.Click })" Class="monthly-filter-ddl">
+                    <Overlay>
+                        <Menu>
+                            @foreach (var filter in monthlyFilter)
+                            {
+                                <MenuItem @onclick="() => SelectedMonthlyFilter = filter">
+                                    <a>
+                                        @filter
+                                    </a>
+                                </MenuItem>
+                            }
+                        </Menu>
+                    </Overlay>
+                    <ChildContent>
+                        <a class="ant-dropdown-link" @onclick:preventDefault>
+                            @SelectedMonthlyFilter <Icon Type="down" />
+                        </a>
+                    </ChildContent>
+                </Dropdown>
+
+                @*<select class="monthly-filter-ddl">
                     <option>This Week</option>
                     <option>This Month</option>
                     <option>Last Month</option>
                     <option>Next Month</option>
-                </select>
+                </select>*@
             </header>
 
             <PatientTable />
@@ -28,10 +49,17 @@
 </main>
 
 @code {
+        List<string> monthlyFilter = new List<string>();
+        string SelectedMonthlyFilter;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         Facade.LoadPatients();
-        base.OnInitialized();
+        monthlyFilter.Add("This Week");
+        monthlyFilter.Add("This Month");
+        monthlyFilter.Add("Last Month");
+        monthlyFilter.Add("Next Month");
+
+        SelectedMonthlyFilter = monthlyFilter[0];
     }
 }

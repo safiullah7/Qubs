@@ -1,14 +1,8 @@
-﻿using Qubs.Models;
-using Qubs.Store.Counter;
+﻿using Qubs.Store.Counter;
 using Fluxor;
-using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Qubs.Store.Patients.Actions;
+using Qubs.Models.Patient;
 
 namespace Qubs.Services
 {
@@ -35,6 +29,11 @@ namespace Qubs.Services
         {
             logger.LogInformation("Dispatched LoadPatients action");
             dispatcher.Dispatch(new LoadPatientsAction());
+        }
+
+        public void LoadPatient(Patient patient)
+        {
+
         }
     }
 }
