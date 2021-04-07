@@ -1,4 +1,6 @@
-﻿<table class="table responsive-table">
+﻿@inject StateFacade StateFacade
+
+<table class="table responsive-table">
     <thead>
         <tr>
             <th>Patient Name</th>
@@ -11,46 +13,19 @@
             <th>Images</th>
         </tr>
     </thead>
-    <tr>
-        <td data-title="Patient Name"><span class="txt"><a href="#">John Doe</a></span></td>
-        <td data-title="Patient ID"><span class="txt">109886</span></td>
-        <td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11">18/11/1985</time></span></td>
-        <td data-title="Descriptions"><span class="txt">US Pelvis</span></td>
-        <td data-title="Accession"><span class="txt">333001</span></td>
-        <td data-title="Date"><span class="txt"><time datetime="2017-05-11">21/03/2017</time></span></td>
-        <td data-title="Modality"><span class="txt">US</span></td>
-        <td data-title="Images"><span class="txt">35</span></td>
-    </tr>
-    <tr class="empty">
-        <td data-title="Patient Name"><span class="txt"></span></td>
-        <td data-title="Patient ID"><span class="txt"></span></td>
-        <td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11"></time></span></td>
-        <td data-title="Descriptions"><span class="txt"></span></td>
-        <td data-title="Accession"><span class="txt"></span></td>
-        <td data-title="Date"><span class="txt"><time datetime="2017-05-11"></time></span></td>
-        <td data-title="Modality"><span class="txt"></span></td>
-        <td data-title="Images"><span class="txt"></span></td>
-    </tr>
-    <tr class="empty">
-        <td data-title="Patient Name"><span class="txt"></span></td>
-        <td data-title="Patient ID"><span class="txt"></span></td>
-        <td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11"></time></span></td>
-        <td data-title="Descriptions"><span class="txt"></span></td>
-        <td data-title="Accession"><span class="txt"></span></td>
-        <td data-title="Date"><span class="txt"><time datetime="2017-05-11"></time></span></td>
-        <td data-title="Modality"><span class="txt"></span></td>
-        <td data-title="Images"><span class="txt"></span></td>
-    </tr>
-    <tr class="empty">
-        <td data-title="Patient Name"><span class="txt"></span></td>
-        <td data-title="Patient ID"><span class="txt"></span></td>
-        <td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11"></time></span></td>
-        <td data-title="Descriptions"><span class="txt"></span></td>
-        <td data-title="Accession"><span class="txt"></span></td>
-        <td data-title="Date"><span class="txt"><time datetime="2017-05-11"></time></span></td>
-        <td data-title="Modality"><span class="txt"></span></td>
-        <td data-title="Images"><span class="txt"></span></td>
-    </tr>
+    @foreach (var patient in Patients)
+    {
+        <tr @onclick="() => StateFacade.LoadPatient(patient)">
+            <td data-title="Patient Name"><span class="txt"><a href="#">@(patient.FirstName + " " + patient.LastName)</a></span></td>
+            <td data-title="Patient ID"><span class="txt">@patient.PatientId</span></td>
+            <td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11">@patient.DateOfBirth</time></span></td>
+            <td data-title="Descriptions"><span class="txt">US Pelvis</span></td>
+            <td data-title="Accession"><span class="txt">333001</span></td>
+            <td data-title="Date"><span class="txt"><time datetime="2017-05-11">@patient.DateOfBirthAsDateTime</time></span></td>
+            <td data-title="Modality"><span class="txt">US</span></td>
+            <td data-title="Images"><span class="txt">35</span></td>
+        </tr>
+    }
 </table>
 
 <div class="pager">
@@ -67,5 +42,6 @@
 </div>
 
 @code {
-
+    [Parameter]
+    public List<Models.Patient.Patient> Patients { get; set; }
 }
